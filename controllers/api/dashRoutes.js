@@ -19,22 +19,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
   res.render('dashboard', { posts, logged_in: req.session.loggedIn })
 });
 
-//create a new post
-router.post('/dashboard', withAuth, async (req, res) => {
-  try {
-    const newPost = await Post.create({
-      ...req.body,
-      title: req.body.title,
-      postContent: req.body.postContent,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newPost);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 //update a post
 router.put('/dashboard/:id', withAuth, async (req, res) => {
   try {
@@ -65,7 +49,7 @@ router.delete('/dashboard/:id', withAuth, async (req, res) => {
     });
 
     if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
+      res.status(404).json({ message: 'No post with this id' });
       return;
     }
 
@@ -73,6 +57,11 @@ router.delete('/dashboard/:id', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get('/post', withAuth, async (req, res) => {
+
+  res.render('post')
 });
 
 module.exports = router;
