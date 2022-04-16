@@ -1,11 +1,11 @@
-const showDashboard = async (event) => {
+const handlePost = async (event) => {
   event.preventDefault();
-
-  const name = document.querySelector('#title').value.trim();
-  const postContent = document.querySelector('#post').value.trim();
+  const name = document.querySelector('#post-title').value.trim();
+  const postContent = document.querySelector('#post-content').value.trim();
 
   if (name && postContent) {
-    const response = await fetch(`/api/dashboard`, {
+    console.log(name, postContent + "----------------------------------------------------------------")
+    const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({ name, postContent }),
       headers: {
@@ -60,7 +60,9 @@ const handleDelete = async (event) => {
   }
 };
 
+document.querySelector('submitPost').addEventListener('submit', handlePost);
+
+
 //TODO: add proper query selectors
-// document.querySelector('.new-project-form').addEventListener('submit', newFormHandler);
 
 // document.querySelector('.project-list').addEventListener('click', delButtonHandler);

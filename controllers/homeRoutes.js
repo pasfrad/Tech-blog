@@ -54,6 +54,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
 	};
 })
 
+router.get('/post', withAuth, async (req, res) => {
+
+  res.render('post')
+});
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
