@@ -16,7 +16,12 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//get a comment by ID
+// get add a comment page
+router.get('/comment/:id', withAuth, async (req, res) => {
+
+  res.render('comment', { post_id: req.params.post_id });
+});
+
 // router.get('/comment/:id', async (req, res) => {
 //   try {
 //     const commentData = await Comment.findByPk(req.params.id, {
@@ -31,7 +36,7 @@ router.post('/', withAuth, async (req, res) => {
 //     const comment = commentData.get({ plain: true });
 //     console.log(commentData);
 //     console.log(comment);
-//     res.render('nonexistantHandlebars', {
+//     res.render('comment', {
 //       ...comment,
 //       logged_in: req.session.logged_in
 //     });

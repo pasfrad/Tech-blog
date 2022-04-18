@@ -1,11 +1,10 @@
-<div class="text-center">
-    <form method="post" data-blog-id="{{blog_id}}" class="postForm">
+<div href="/post" class="text-center">
+  <form method="post" data-post-id="{{post_id}}" class="commentForm">
     <div class="form-group">
       <label for="post-title">Comment:</label>
-      <textarea class="form-input" id="blog" rows="3"
-        placeholder="Enter your comment here"></textarea>
+      <textarea class="form-input" name="content" id="blog" rows="3" placeholder="Enter your comment here"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-    <a class="btn btn-primary " href="/dashboard">Back</a>
+    <a class="btn btn-primary " href="/homepage">Back</a>
   </form>
 </div>

@@ -3,8 +3,9 @@
   <div class="card col-md-5 border-danger mb-3">
     <h5 class="card-header">{{post.title}}</h5>
     <div class="card-body">
-      <h6 class="card-title mb-2 text-muted">Created by {{post.user.name}} on {{format_date post.date_created}}</h6>
       <p class="card-text">{{post.postContent}}</p>
+      <h6 class="card-title mb-2 text-muted">Created by {{post.user.name}} on {{format_date post.date_created}}</h6>
+      <a class="btn btn-primary " href="/comment/{{post.id}}">Comment</a>
     </div>
     {{#each post.Comments as |comment|}}
     <div class="card">
