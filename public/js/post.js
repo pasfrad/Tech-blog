@@ -24,13 +24,13 @@ const handleComment = async (event) => {
   event.preventDefault();
 
   const comments = document.querySelector('#comment').value.trim();
-  const post_id = event.target.dataset('data-post-id');
+  const postId = event.target.dataset('data-post-id');
 
   if (comments) {
 
       const response = await fetch(`/api/comments/${post_id}`, {
           method: 'POST',
-          body: JSON.stringify({ post_id, comments }),
+          body: JSON.stringify({ postId, comments }),
           headers: { 'Content-Type': 'application/json' },
       });
 
