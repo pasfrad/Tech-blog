@@ -9,7 +9,7 @@
     </div>
     {{#each post.Comments as |comment|}}
     <div class="card">
-      <h5 class="card-title">{{comment.title}} by {{comment.user.name}}</h5>
+      <h5 class="card-title">By {{comment.user.name}}</h5>
       <p class="card-text">{{comment.content}}</p>
     </div>
     {{/each}}
