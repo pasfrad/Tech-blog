@@ -1,10 +1,12 @@
-<div href="/post" class="text-center">
-  <form method="post" data-post-id="{{post_id}}" class="commentForm">
+<div class="text-center">
+  <form method="post" data-post-id="{{post_id}}" class="commentForm" href="/api/comments">
     <div class="form-group">
-      <label for="post-title">Comment:</label>
-      <textarea class="form-input" name="content" id="blog" rows="3" placeholder="Enter your comment here"></textarea>
+      <label for="comment-title">Comment:</label>
+      <textarea class="form-input" id="comment" name="content" rows="3" placeholder="Enter your comment here"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" id="submitComment" class="btn btn-primary">Submit</button>
     <a class="btn btn-primary " href="/homepage">Back</a>
   </form>
 </div>
+
+<script src="/js/post.js"></script>

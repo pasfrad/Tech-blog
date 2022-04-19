@@ -4,7 +4,6 @@ const handlePost = async (event) => {
   const postContent = document.querySelector('#post-content').value.trim();
 
   if (name && postContent) {
-    console.log(name, postContent + "----------------------------------------------------------------")
     const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({ name, postContent }),
@@ -25,13 +24,13 @@ const handleComment = async (event) => {
   event.preventDefault();
 
   const comments = document.querySelector('#comment').value.trim();
-  const post_id = event.target.getAttribute('data-blog-id');
+  const post_id = event.target.getAttribute('data-post-id');
 
   if (comments) {
 
-      const response = await fetch(`/comment/${post_id}`, {
+      const response = await fetch(`/api/comments/${post_id}`, {
           method: 'POST',
-          body: JSON.stringify({ comments }),
+          body: JSON.stringify({ comments, post_id }),
           headers: { 'Content-Type': 'application/json' },
       });
 
@@ -60,7 +59,13 @@ const handleDelete = async (event) => {
   }
 };
 
-document.querySelector('submitPost').addEventListener('submit', handlePost);
+if (postForm){
+  postForm.querySelector('submitPost').addEventListener('submit', handlePost);
+}
+
+if (commentForm){
+  commentForm.querySelector('submitComment').addEventListener('submit', handleComment);
+}
 
 
 //TODO: add proper query selectors
