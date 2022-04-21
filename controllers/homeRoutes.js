@@ -64,6 +64,11 @@ router.get('/comment/:post_id', withAuth, async (req, res) => {
   res.render('comment', { post_id: req.params.post_id });
 });
 
+router.get('/update/:id', withAuth, async (req, res) => {
+
+  res.render('update', { id: req.params.id });
+});
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
