@@ -1,12 +1,17 @@
+const postForm = document.querySelector('.postForm');
+const commentForm = document.querySelector('.commentForm');
+
 const handlePost = async (event) => {
   event.preventDefault();
-  const name = document.querySelector('#post-title').value.trim();
+  
+  const title = document.querySelector('#post-title').value.trim();
   const postContent = document.querySelector('#post-content').value.trim();
+  console.log(name + postContent)
 
-  if (name && postContent) {
+  if (title && postContent) {
     const response = await fetch(`/api/posts`, {
       method: 'POST',
-      body: JSON.stringify({ name, postContent }),
+      body: JSON.stringify({ title, postContent }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,11 +29,12 @@ const handleComment = async (event) => {
   event.preventDefault();
 
   const comments = document.querySelector('#comment').value.trim();
-  const postId = event.target.dataset('data-post-id');
+  const postId = document.querySelector('data-post-id');
+  console.log("post id is " + postId)
 
   if (comments) {
 
-      const response = await fetch(`/api/comments/${post_id}`, {
+      const response = await fetch(`/api/comments/`, {
           method: 'POST',
           body: JSON.stringify({ postId, comments }),
           headers: { 'Content-Type': 'application/json' },
@@ -60,14 +66,9 @@ const handleDelete = async (event) => {
 };
 
 if (postForm){
-  postForm.querySelector('submitPost').addEventListener('submit', handlePost);
+  postForm.addEventListener('submit', handlePost);
 }
 
 if (commentForm){
-  commentForm.querySelector('submitComment').addEventListener('submit', handleComment);
+  commentForm.addEventListener('submit', handleComment);
 }
-
-
-//TODO: add proper query selectors
-
-// document.querySelector('.project-list').addEventListener('click', delButtonHandler);

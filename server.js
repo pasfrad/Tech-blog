@@ -6,6 +6,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -37,10 +38,10 @@ const sess = {
 
 app.use(session(sess));
 
-app.use(function (req, res, next) {
-  res.locals.session = req.session;
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.locals.session = req.session;
+//   next();
+// });
 
 
 // Inform Express.js on which template engine to use
