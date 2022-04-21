@@ -1,12 +1,13 @@
 const postForm = document.querySelector('.postForm');
 const commentForm = document.querySelector('.commentForm');
+const delete_buttons = document.querySelectorAll('.deleteBtn');
+const deletePost = document.querySelectorAll('#deletePostBtn');
 
 const handlePost = async (event) => {
   event.preventDefault();
   
   const title = document.querySelector('#post-title').value.trim();
   const postContent = document.querySelector('#post-content').value.trim();
-  console.log(name + postContent)
 
   if (title && postContent) {
     const response = await fetch(`/api/posts`, {
@@ -49,15 +50,17 @@ const handleComment = async (event) => {
 };
 
 const handleDelete = async (event) => {
+  // const id = event.target.getAttribute('data-id');
+  // console.log("Post id: " + id)
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/dashboard/${id}`, {
+    const response = await fetch(`/api/posts/${id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/dashboard');
     } else {
       alert('Something went wrong');
     }
@@ -71,3 +74,9 @@ if (postForm){
 if (commentForm){
   commentForm.addEventListener('submit', handleComment);
 }
+
+delete_buttons.forEach((deletePost) => {
+
+  deletePost.addEventListener('submit', handleDelete);
+
+});
