@@ -5,14 +5,17 @@
     <div class="card-body">
       <p class="card-text">{{post.postContent}}</p>
       <h6 class="card-title mb-2 text-muted">Created by {{post.user.name}} on {{format_date post.date_created}}</h6>
+      {{#if logged_in}}
       <a class="btn btn-primary " href="/comment/{{post.id}}">Comment</a>
+      {{/if}}
     </div>
-    {{#each post.Comments as |comment|}}
+    {{#each post.comments as |comment|}}
     <div class="card">
-      <h5 class="card-title">By {{comment.user.name}}</h5>
-      <p class="card-text">{{comment.content}}</p>
+      <h6 class="card-text">{{comment.content}}</h6>
+      <p class="card-title">By {{comment.user.name}}</p>
     </div>
     {{/each}}
+    {{!-- {{> comment comments=post.comments}} --}}
   </div>
 </div>
 {{/each}}
