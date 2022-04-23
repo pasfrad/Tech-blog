@@ -1,18 +1,18 @@
-<div class="container create-post">
-  <a href='/post' class="btn btn-primary">New Post</a>
+<div class="container row mb-3">
+  <a href='/post' class="btn btn-success">New Post</a>
 </div>
 {{#each posts as |post| }}
 <div class="container row mb-4">
-  <div class="card col-md-5 border-danger mb-3">
+  <div class="card border-dark">
     <h5 class="card-header">{{post.title}}</h5>
     <div class="card-body">
       <h6 class="card-title mb-2 text-muted">Created on {{format_date post.date_created}}</h6>
       <p class="card-text">{{post.postContent}}</p>
+      <form method="delete" data-id="{{post.id}}" class="deleteBtn">
+        <button type="submit" id="deletePostBtn" class="btn btn-danger">Delete Post</button>
+      </form>
     </div>
-    <form method="delete" data-id="{{post.id}}" class="deleteBtn">
-      <button type="submit" id="deletePostBtn" class="btn btn-danger">Delete Post</button>
-    </form>
-    <a href="/update/{{post.id}}" class="btn btn-primary">Update Post</a>
+    <a href="/update/{{post.id}}" class="btn btn-dark mb-1">Update Post</a>
   </div>
 </div>
 {{/each}}
