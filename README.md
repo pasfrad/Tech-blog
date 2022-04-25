@@ -30,5 +30,8 @@ The application can be used by anyone with the URL, or by forking the repository
 
 Starting at the homepage, a user can see all existing posts. By clicking the login button, they are prompted to sign up for an account, and then they can see their personal dashboard, from which they can make, update, and delete their posts. A user must also have an account in order to comment on others' posts.
 
+## Deployed Application
+https://peaceful-reaches-79315.herokuapp.com/
+
 ## For Questions
 Email: rd.hart@outlook.com
